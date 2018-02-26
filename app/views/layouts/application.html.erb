@@ -2,98 +2,25 @@
 <html>
   <head>
     <title>Startpro</title>
-    <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= csrf_meta_tags %>
+
   </head>
 
   <body>
 
-    <!-- Dropdown Structure -->
-    <ul id="dropdown1" class="dropdown-content">
-      <li><a href="#!">Profile</a></li>
-      <li><a href="#!">Courses</a></li>
-      <li class="divider"></li>
-      <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-    </ul>
-
-    <ul id="dropdown2" class="dropdown-content">
-      <li><a href="#!">Profile</a></li>
-      <li><a href="#!">Courses</a></li>
-      <li class="divider"></li>
-      <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-    </ul>
-
+    <%= render partial: "shared/header" %>
+    <%= render partial: "shared/message" %>
     
-    <header>
-      <nav class="red dark-2 z-depth-2">
-        <div class="container">
-          <div class="nav-wrapper">
-            <a href="#!" class="brand-logo">StartPro</a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-            <ul class="right hide-on-med-and-down">
-              <li><a href="#">Courses</a></li>
-              <% if(!user_signed_in?) %>
-                <li><%= link_to "Sign Up", new_user_registration_path %></li>
-                <li><%= link_to "Log In", new_user_session_path %></li>
-              <% else %>  
-                <!-- Dropdown Trigger -->
-                <li><a class="dropdown-button" href="#!" data-activates="dropdown1"><%= current_user.email %><i class="mdi-navigation-arrow-drop-down right"></i></a></li>
-              <% end %>
-
-            </ul>
-            <ul class="side-nav" id="mobile-demo">
-              <li><a href="#">Courses</a></li>
-              <% if(!user_signed_in?) %>
-                <li><%= link_to "Sign Up", new_user_registration_path %></li>
-                <li><%= link_to "Log In", new_user_session_path %></li>
-              <% else %>  
-                <!-- Dropdown Trigger -->
-                <li><a class="dropdown-button" href="#!" data-activates="dropdown2"><%= current_user.email %><i class="mdi-navigation-arrow-drop-down right"></i></a></li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
     <main>
       <div class="container">
         <%= yield %>
       </div>
     </main>
 
-
-    <footer class="page-footer blue dark-4">
-      <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">StartPro</h5>
-            <p class="grey-text text-lighten-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</p>
-          </div>
-          <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Social</h5>
-            <ul>
-              <li><a class="grey-text text-lighten-3" href="#!">Twitter</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Facebook</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Google Plus</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer-copyright">
-        <div class="container">
-          © 2018 Copyright StarPro
-          <%= link_to "About Us ", pages_about_path, :class => "grey-text text-lighten-4 right" %>
-        </div>
-      </div>
-    </footer>
-
-
+    <%= render partial: "shared/footer" %>
 
   </body>
 
